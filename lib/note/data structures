@@ -1,0 +1,42 @@
+// Variables
+
+String name = "Bảo Nguyên" ;
+int age = 27 ;
+double pi = 3.14 ;
+bool condition = true ;
+
+// basic math operator
+
+ 1 + 1 -> 2, add
+ 4 - 1 -> 3, subtract
+ 2 * 3 -> 6, mul
+ 8 / 4 -> 2, divide
+ 9 % 4 -> 1, remainder
+
+// DATA STRUCTURES
+
+  List<int> numbers = [1,2,3] ;
+  List<String> names = ["A" , "B" , "C"] ;
+
+  void printNumbers(){
+    for(int i = 0 ; i < numbers.length ; i++){
+      print(numbers[i]) ;
+    }
+  }
+  void printNames(){
+    for(int i = 0 ; i < names.length ; i++){
+      print(names[i]) ;
+    }
+  }
+
+//SET: underordered collection of unique elements
+
+    Set<String> uniqueNames = {"A" , "B" , "C"} ;
+
+// MAP: stored as key-value pairs
+
+    Map user = {
+        'name': "ABC",
+        'age': 27 ,
+        'height': 180
+    };

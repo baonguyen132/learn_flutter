@@ -1,0 +1,20 @@
+
+  // init the hive
+
+  await Hive.initFlutter();
+
+  //  open a box
+
+  var box = await Hive.openBox("myBox") ;
+
+  // reference the hive box
+
+  final _myBox = Hive.box("myBox") ;
+
+   void loadData() {
+      todolist = _myBox.get("todolist");
+   }
+
+   void uodateDatabase() {
+      _myBox.put("todolist",  todolist) ;
+   }

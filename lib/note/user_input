@@ -1,0 +1,14 @@
+// TextField
+
+              TextEditingController textEditingController = TextEditingController();
+              String _name = "" ;
+
+              TextField(
+                controller: textEditingController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "Enter name"
+                ),
+              ),
+
+// Check Box

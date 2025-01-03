@@ -1,0 +1,23 @@
+        AppBar(
+          title: Text("Hello"),
+          backgroundColor: Colors.deepPurple,
+          centerTitle: true,
+          elevation: 0,
+          leading: IconButton(onPressed: (){}, icon: const Icon(Icons.menu)),
+          actions: [
+            IconButton(
+                onPressed: (){},
+                icon: const Icon(
+                  Icons.logout,
+                  color: Colors.white,
+                ),
+            ),
+            IconButton(
+              onPressed: (){},
+              icon: const Icon(
+                Icons.audio_file,
+                color: Colors.white,
+              ),
+            )
+          ],
+        ),

@@ -1,0 +1,64 @@
+// List View
+==================== 1 ===================
+
+        ListView(
+          scrollDirection: Axis.horizontal,
+          children: [
+            Container(
+              width: 350,
+              color: Colors.red,
+            ),
+            Container(
+              width: 500,
+              color: Colors.blue,
+            ),
+            Container(
+              width: 350,
+              color: Colors.green,
+            )
+          ],
+        )
+
+==================== 2 ===================
+        List<String> names = ["Mitch" , "Sharon", "Vince"] ;
+
+        ListView.builder(
+          itemCount: names.length,
+          itemBuilder: (context , index) => createListView(name: names[index] , age: index),
+
+        )
+        
+// Grid View 
+
+        GridView.builder(
+            itemCount: 64,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+            itemBuilder: (context, index) => Container(
+              color: Colors.deepPurple,
+              margin: EdgeInsets.all(5),
+            ),)
+            
+// Card View 
+
+        Widget createListView({name , age}) {
+          return CardView(name: name, age: age) ;
+        }
+
+        class CardView extends StatefulWidget {
+
+          final String name ;
+          final int age ;
+          const CardView({super.key, required this.name , required this.age}) ;
+
+          @override
+          State<CardView> createState() => _CardViewState();
+        }
+
+        class _CardViewState extends State<CardView> {
+          @override
+          Widget build(BuildContext context) {
+            return Text("name: ${widget.name} - age: ${widget.age}");
+
+          }
+        }
+
