@@ -4,11 +4,14 @@ import 'package:learn_flutter/project/widget/side_menu_widget.dart';
 
 import '../data/SideMenuData.dart';
 import '../model/MenuModal.dart';
+import '../widget/dark_light_mode.dart';
 
 class Mydrawer extends StatefulWidget {
 
   int selection = 1 ;
-  Handle handle ;
+
+  final Function (int page) handle ;
+
   Mydrawer({super.key , required this.selection , required this.handle});
 
   @override
@@ -23,7 +26,7 @@ class _MydrawerState extends State<Mydrawer> {
 
 
     return Drawer(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.mainDraw,
       elevation: 8.0,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -89,6 +92,9 @@ class _MydrawerState extends State<Mydrawer> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+
+                    DarkLightMode() ,
+
                     Container(
                       margin: EdgeInsets.all(10),
                       child: InkWell(
@@ -128,5 +134,3 @@ class _MydrawerState extends State<Mydrawer> {
   }
 }
 
-
-typedef Handle = void Function(int page);

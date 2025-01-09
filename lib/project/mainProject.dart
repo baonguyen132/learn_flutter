@@ -14,10 +14,13 @@ class MainProject extends StatefulWidget {
 class _MainProjectState extends State<MainProject> {
   @override
   Widget build(BuildContext context) {
-    return Responsive(
-        desktop: Desktop(),
-        mobile: Mobile(),
-        tablet: Tablet()
+    return Container(
+      color: Theme.of(context).colorScheme.background ,
+      child: Responsive(
+          desktop: Desktop(),
+          mobile: Mobile(),
+          tablet: Tablet()
+      ),
     );
   }
 }

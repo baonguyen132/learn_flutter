@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/project/theme/theme.dart';
+import 'package:learn_flutter/project/screens/dashboard/dashboard_desktop.dart';
 import 'package:learn_flutter/project/util/MyDrawer.dart';
+
+import '../data/ConstraintData.dart';
 
 class Desktop extends StatefulWidget {
   Desktop({super.key});
-  int page = 1 ;
+
   @override
   State<Desktop> createState() => _DesktopState();
 }
@@ -17,29 +19,20 @@ class _DesktopState extends State<Desktop> {
         child: Row(
           children: [
             Expanded(
+              flex: 2,
               child: Mydrawer(
-                selection: widget.page,
+                selection: mainPage,
                 handle: (page) {
                   setState(() {
-                    widget.page = page ;
+                    mainPage = page ;
                   });
                 },
                 
               )
             ),
             Expanded(
-              flex: 5,
-                child: Column(
-                  children: [
-                    TextButton(
-                      onPressed: () {print(widget.page) ;}, 
-                      child: Text("text"),
-                      style: ButtonStyle(
-                        backgroundColor: WidgetStatePropertyAll(widget.page == 1 ? Colors.red : Colors.black)
-                      ),
-                    )
-                  ],
-                )
+              flex: 8,
+                child: DashboardDesktop()
             )
           ],
         )
