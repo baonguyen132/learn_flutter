@@ -20,8 +20,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: MultiBlocProvider(
           providers: [
-            BlocProvider(create: (context) => CounterBloc(),),
-            BlocProvider(create: (context) => VisibilityBloc(),)
+            BlocProvider(
+              lazy: true,
+              create: (context) => CounterBloc(),
+            ),
+            BlocProvider(
+              lazy: true,
+              create: (context) => VisibilityBloc(),
+            )
           ],
           child: App()
       ),

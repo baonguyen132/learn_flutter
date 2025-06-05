@@ -22,22 +22,26 @@ class _AppState extends State<App> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          BlocBuilder<CounterBloc, CounterState>(
-            buildWhen: (previous, current) {
-              print("${previous.count}");
-              print("${current.count}");
-              return true ;
-            },
-            builder: (context, state) {
-              return Center(
-                child: Text(
-                  "${state.count}",
-                  style: const TextStyle(
-                      fontSize: 30
+          BlocConsumer<CounterBloc, CounterState>(
+              buildWhen: (previous, current) {
+                return current.count >= 2 ;
+              },
+              builder: (context, state) {
+                return Center(
+                  child: Text(
+                    "${state.count}",
+                    style: const TextStyle(
+                        fontSize: 30
+                    ),
                   ),
-                ),
-              ) ;
-            },
+                ) ;
+              },
+              listener: (context, state) {
+                if(state.count == 3) {
+                  print("ssss");
+                }
+              },
+
           ),
           const SizedBox(height: 50, width: 50,),
           BlocBuilder<VisibilityBloc, VisibilityState>(builder: (context, state) {
