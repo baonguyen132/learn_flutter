@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:learn_flutter/bloc/counter_event.dart';
-import 'package:learn_flutter/bloc_visibility/visibility_bloc.dart';
-import 'package:learn_flutter/bloc_visibility/visibility_event.dart';
-import 'package:learn_flutter/bloc_visibility/visibility_state.dart';
-
-import 'bloc/counter_bloc.dart';
-import 'bloc/counter_state.dart';
+import 'package:learn_flutter/cubit/counter/counter_cubit.dart';
+import 'package:learn_flutter/cubit/counter/counter_state.dart';
+import 'package:learn_flutter/cubit/visibility/visibility_cubit.dart';
+import 'package:learn_flutter/cubit/visibility/visibility_state.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -22,7 +19,7 @@ class _AppState extends State<App> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          BlocConsumer<CounterBloc, CounterState>(
+          BlocConsumer<CounterCubit, CounterState>(
               buildWhen: (previous, current) {
                 return current.count >= 2 ;
               },
@@ -44,7 +41,7 @@ class _AppState extends State<App> {
 
           ),
           const SizedBox(height: 50, width: 50,),
-          BlocBuilder<VisibilityBloc, VisibilityState>(builder: (context, state) {
+          BlocBuilder<VisibilityCubit, VisibilityState>(builder: (context, state) {
             return Center(
               child: Visibility(
                   visible: state.show,
@@ -63,7 +60,7 @@ class _AppState extends State<App> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(onPressed: () {
-            context.read<CounterBloc>().add(CounterIncrementEvent());
+            context.read<CounterCubit>().increament();
           },
             shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(100))),
             tooltip: "Increment",
@@ -71,7 +68,7 @@ class _AppState extends State<App> {
           ),
           const SizedBox(height: 30,),
           FloatingActionButton(onPressed: () {
-            context.read<CounterBloc>().add(CounterDecrementEvent());
+            context.read<CounterCubit>().decreament();
           },
             shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(100))),
             tooltip: "Decrement",
@@ -80,7 +77,7 @@ class _AppState extends State<App> {
 
           const SizedBox(height: 30,),
           FloatingActionButton(onPressed: () {
-            context.read<VisibilityBloc>().add(VisibilityShowEvent());
+            context.read<VisibilityCubit>().show();
           },
             shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(100))),
             tooltip: "Show",
@@ -88,7 +85,7 @@ class _AppState extends State<App> {
           ),
           const SizedBox(height: 30,),
           FloatingActionButton(onPressed: () {
-            context.read<VisibilityBloc>().add(VisibilityHideEvent());
+            context.read<VisibilityCubit>().hide();
           },
             shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(100))),
             tooltip: "Hide",

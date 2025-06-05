@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learn_flutter/app.dart';
-import 'package:learn_flutter/bloc/counter_bloc.dart';
-import 'package:learn_flutter/bloc/counter_event.dart';
-import 'package:learn_flutter/bloc/counter_state.dart';
-import 'package:learn_flutter/bloc_visibility/visibility_bloc.dart';
-import 'package:provider/provider.dart';
+import 'package:learn_flutter/cubit/counter/counter_cubit.dart';
+import 'package:learn_flutter/cubit/visibility/visibility_cubit.dart';
 
 void main() async {
   runApp(MyApp());
@@ -22,11 +19,11 @@ class MyApp extends StatelessWidget {
           providers: [
             BlocProvider(
               lazy: true,
-              create: (context) => CounterBloc(),
+              create: (context) => CounterCubit(),
             ),
             BlocProvider(
               lazy: true,
-              create: (context) => VisibilityBloc(),
+              create: (context) => VisibilityCubit(),
             )
           ],
           child: App()
